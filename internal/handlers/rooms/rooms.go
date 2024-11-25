@@ -1,13 +1,13 @@
-package handlers
+package rooms
 
 import (
 	"encoding/json"
 	"games_night/server/internal/models"
+	"github.com/gorilla/mux"
 	"net/http"
 )
 
-// Route handlers for room routes
-// Not sure if this is the best approach but I've been working with Ruby on Rails and this is how I would do it there
+// HandleRoomsCollectionRoutes handles routes for room collections.
 func HandleRoomsCollectionRoutes(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodPost:
@@ -17,7 +17,7 @@ func HandleRoomsCollectionRoutes(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// Routes associated with a specific room
+// HandleRoomMemberRoutes handles routes for specific room members.
 func HandleRoomMemberRoutes(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
