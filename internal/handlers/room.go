@@ -1,26 +1,31 @@
 package handlers
 
+import (
+	"encoding/json"
+	"games_night/server/internal/models"
+	"net/http"
+)
+
 // Route handlers for room routes
 // Not sure if this is the best approach but I've been working with Ruby on Rails and this is how I would do it there
-func handleRoomsCollectionRoutes(w http.ResponseWriter, r *http.Request) {
+func HandleRoomsCollectionRoutes(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodPost:
-		CreateRoom(w, r)
+		createRoom(w, r)
 	default:
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 }
 
 // Routes associated with a specific room
-func handleRoomMemberRoutes(w http.ResponseWriter, r *http.Request) {
+func HandleRoomMemberRoutes(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
-		GetRoom(w, r)
+		getRoom(w, r)
 	default:
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 }
-
 
 func createRoom(w http.ResponseWriter, r *http.Request) {
 	var room models.Room
